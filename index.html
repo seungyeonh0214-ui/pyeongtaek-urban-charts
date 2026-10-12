@@ -3,207 +3,298 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>평택시 미집행 도시계획시설 — 차트 2종</title>
+<title>고덕동 · 진위면 비교 — 도시계획</title>
 <style>
   :root{
-    --bg:#ffffff; --panel:#f7f9fc; --line:#d8dde6;
-    --ink:#1b1f27; --mute:#5c6472;
-    --accent:#1f3f77; --accent-soft:#9fb3d4; --warn:#a3561b;
-    --max:60rem;
+    --bg:#fff; --panel:#f7f9fc; --line:#d8dde6; --ink:#1b1f27; --mute:#5c6472;
+    --a1:#1f4e9c; --a2:#b35c15; --a1w:#dbe5f5; --a2w:#f6e3cf;
   }
-  @media (prefers-color-scheme: dark){
-    :root{ --bg:#15181d; --panel:#1d2229; --line:#333a45;
-           --ink:#e9ecf1; --mute:#9aa3b2; --accent:#7ea3dd; --accent-soft:#3c536f;
-           --warn:#d79a5e; color-scheme:dark; }
+  @media (prefers-color-scheme:dark){
+    :root{--bg:#15181d;--panel:#1d2229;--line:#333a45;--ink:#e9ecf1;--mute:#9aa3b2;
+          --a1:#6f9ee6;--a2:#e0975a;--a1w:#243245;--a2w:#3a2d1e;color-scheme:dark}
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
-       font:15px/1.6 "Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;}
-  .wrap{max-width:var(--max);margin-inline:auto;padding:24px 16px 48px;}
-  header h1{font-size:1.45rem;line-height:1.3;margin:0 0 6px;text-wrap:balance}
-  header p{margin:0;color:var(--mute);font-size:.86rem}
-  .meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin-top:10px;font-size:.78rem;color:var(--mute)}
-  .meta code{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1px 5px;font-size:.92em}
+       font:15px/1.6 "Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif}
+  .wrap{max-width:72rem;margin-inline:auto;padding:22px 16px 48px}
+  h1{font-size:1.3rem;margin:0 0 4px;line-height:1.3}
+  .lede{margin:0 0 6px;color:var(--mute);font-size:.84rem}
+  .meta{display:flex;flex-wrap:wrap;gap:5px 13px;font-size:.76rem;color:var(--mute);margin-bottom:4px}
+  .meta code{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1px 5px}
 
-  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;
-        padding:18px 16px;margin-top:22px}
-  .card h2{font-size:1.05rem;margin:0 0 2px}
-  .card .sub{margin:0 0 4px;color:var(--mute);font-size:.82rem}
-  .axis-note{margin:0 0 12px;color:var(--mute);font-size:.76rem}
-  figure{margin:0}
-  figcaption{margin-top:12px;padding-top:10px;border-top:1px solid var(--line);
-             color:var(--mute);font-size:.74rem;line-height:1.55}
-  figcaption b{color:var(--ink);font-weight:600}
-  svg{display:block;width:100%;height:auto;overflow:visible}
-  .hl{color:var(--warn);font-weight:600}
-  .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:.78rem}
-  .legend span{display:inline-flex;align-items:center;gap:6px}
-  .sw{width:.7rem;height:.7rem;border-radius:2px;display:inline-block}
-  .tbl{width:100%;border-collapse:collapse;margin-top:12px;font-size:.78rem}
-  .tbl th,.tbl td{border-bottom:1px solid var(--line);padding:5px 6px;text-align:left}
-  .tbl td.n{text-align:right;font-variant-numeric:tabular-nums}
-  footer{margin-top:28px;color:var(--mute);font-size:.74rem;line-height:1.6}
-  @media (max-width:520px){
-    .wrap{padding:18px 14px 36px}
-    header h1{font-size:1.2rem}
-    .card{padding:14px 12px}
+  .vs{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:12px;margin:22px 0 6px}
+  .vs .who{padding:11px 14px;border-radius:10px;border:1px solid var(--line)}
+  .vs .who.l{background:var(--a1w);border-left:4px solid var(--a1);text-align:right}
+  .vs .who.r{background:var(--a2w);border-right:4px solid var(--a2)}
+  .vs .nm{font-size:1.06rem;font-weight:700;line-height:1.25}
+  .vs .sm{font-size:.74rem;color:var(--mute)}
+  .vs .mid{font-weight:700;color:var(--mute);font-size:.86rem}
+
+  .dvs{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:6px 14px 12px}
+  .dv{display:grid;grid-template-columns:1fr 10.5rem 1fr;align-items:center;gap:8px;
+      padding:8px 0;border-bottom:1px solid var(--line)}
+  .dv:last-child{border-bottom:0}
+  .dv-l,.dv-r{display:flex;align-items:center;gap:7px;min-width:0}
+  .dv-l{justify-content:flex-end}
+  .dv i{display:block;height:15px;border-radius:3px;min-width:2px}
+  .dv-l i{background:var(--a1);border-radius:4px 0 0 4px}
+  .dv-r i{background:var(--a2);border-radius:0 4px 4px 0}
+  .dv .v{font-variant-numeric:tabular-nums;font-size:.84rem;font-weight:700;white-space:nowrap}
+  .dv .v.dim{font-weight:400;color:var(--mute)}
+  .dv-l .v{color:var(--a1)} .dv-r .v{color:var(--a2)}
+  .dv .mid{text-align:center;min-width:0}
+  .dv .k{font-size:.76rem;line-height:1.25}
+  .dv .ratio{font-size:.7rem;color:var(--mute);font-variant-numeric:tabular-nums}
+  @media (max-width:640px){
+    .dv{grid-template-columns:1fr;gap:3px;padding:10px 0}
+    .dv .mid{text-align:left;order:-1}
+    .dv-l{justify-content:flex-start;flex-direction:row-reverse}
+    .dv-l i{border-radius:0 4px 4px 0}
+    .vs{grid-template-columns:1fr;gap:7px}
+    .vs .who.l{text-align:left;border-left:4px solid var(--a1)}
   }
+
+  h3.sec{font-size:1rem;margin:26px 0 8px;padding-bottom:5px;border-bottom:1px solid var(--line)}
+  .pair{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,21rem),1fr));gap:14px}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;
+        min-width:0;border-top:3px solid var(--line)}
+  .card[data-i="0"]{border-top-color:var(--a1)} .card[data-i="1"]{border-top-color:var(--a2)}
+  .card h4{font-size:.88rem;margin:0 0 2px;display:flex;align-items:center;gap:6px}
+  .num{display:inline-flex;align-items:center;justify-content:center;width:1.2rem;height:1.2rem;
+       border-radius:50%;color:#fff;font-size:.7rem;font-weight:700}
+  .card[data-i="0"] .num{background:var(--a1)} .card[data-i="1"] .num{background:var(--a2)}
+  .card .sub{margin:0 0 10px;font-size:.73rem;color:var(--mute)}
+  svg{display:block;width:100%;height:auto;overflow:visible}
+  .legend{display:flex;flex-wrap:wrap;gap:4px 12px;margin-top:8px;font-size:.72rem;color:var(--mute)}
+  .legend span{display:inline-flex;align-items:center;gap:5px}
+  .sw{width:.6rem;height:.6rem;border-radius:2px;display:inline-block}
+  table{width:100%;border-collapse:collapse;font-size:.75rem}
+  th,td{border-bottom:1px solid var(--line);padding:4px 6px;text-align:left}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+  .src{margin-top:9px;padding-top:7px;border-top:1px solid var(--line);
+       font-size:.7rem;color:var(--mute);line-height:1.5}
+  .src b{color:var(--ink)}
+  footer{margin-top:26px;color:var(--mute);font-size:.73rem;line-height:1.6}
+  @media (max-width:520px){ .wrap{padding:16px 13px 36px} h1{font-size:1.1rem} }
 </style>
 </head>
 <body>
 <div class="wrap">
-  <header>
-    <h1>평택시 미집행 도시계획시설 — 차트 2종</h1>
-    <p>브이월드 2D 데이터 API 2.0으로 받은 레이어를 카탈로그 행 기준으로 집계했습니다.</p>
-    <div class="meta">
-      <span>조회일 <code>2026-10-12</code></span>
-      <span>좌표계 <code>EPSG:4326</code></span>
-      <span>대상 <code>평택시 sig_cd 41220</code></span>
-    </div>
-  </header>
-
-  <!-- 차트 A — 비교(막대), 필수 -->
-  <section class="card">
-    <figure>
-      <h2>차트 A · 읍면동별 미집행 공원 결정면적</h2>
-      <p class="sub">항목 간 크기 비교 — 상위 8개 읍면동</p>
-      <p class="axis-note">가로축 결정면적(ha) · 세로축 읍면동</p>
-      <svg id="bar" role="img" aria-label="읍면동별 미집행 공원 결정면적 막대그래프"></svg>
-      <figcaption>
-        <b>단위</b> ha(헥타르), 괄호 안은 공원 개소<br>
-        <b>출처</b> 브이월드 2D 데이터 API 2.0 · LT_C_UPISUQ153 도시계획시설 — 카탈로그 D-1행 ·
-        읍면동 귀속은 LT_C_ADEMD_INFO(카탈로그 D-4행) 대표점 기준<br>
-        <b>조회일</b> 2026-10-12<br>
-        <b>강조</b> <span class="hl">고덕동</span> — 107.9 ha로 2위 진위면(50.7 ha)의 두 배를 넘습니다.
-      </figcaption>
-    </figure>
-  </section>
-
-  <!-- 차트 B — 구성(도넛), 선택 -->
-  <section class="card">
-    <figure>
-      <h2>차트 B · 도시계획시설 대분류 구성비</h2>
-      <p class="sub">전체 1,529건의 부분 비중</p>
-      <p class="axis-note">기준 대분류(lcl_nam) 건수 — 전체 합 100%</p>
-      <svg id="donut" role="img" aria-label="도시계획시설 대분류 구성비 도넛그래프"></svg>
-      <div class="legend" id="legend"></div>
-      <table class="tbl" id="tbl">
-        <thead><tr><th>대분류</th><th class="n">건수</th><th class="n">구성비</th></tr></thead>
-        <tbody></tbody>
-      </table>
-      <figcaption>
-        <b>단위</b> 건(결정 건수), %는 전체 1,529건 대비 구성비<br>
-        <b>출처</b> 브이월드 2D 데이터 API 2.0 · LT_C_UPISUQ153 도시계획시설 — 카탈로그 D-1행<br>
-        <b>조회일</b> 2026-10-12<br>
-        <b>강조</b> <span class="hl">공원</span> — 469건, 전체의 30.7%로 녹지에 이어 두 번째입니다.
-      </figcaption>
-    </figure>
-  </section>
-
+  <h1>고덕동 · 진위면 비교 — 평택시 도시계획시설</h1>
+  <p class="lede">6주차 과제 후보지 두 곳을 같은 기준으로 견준 결과입니다.
+    값은 모두 카탈로그 행에서 집계했습니다.</p>
+  <div class="meta">
+    <span>조회일 <code>2026-10-12</code></span>
+    <span>좌표계 <code>EPSG:4326</code></span>
+    <span>출처 <code>브이월드 2D 데이터 API 2.0</code></span>
+  </div>
+  <div id="out"></div>
   <footer>
-    값은 모두 카탈로그 행에서 가져왔습니다. 시설의 읍면동 귀속과 평택시 경계 클리핑은 대표점 기준이라,
-    경계를 걸치는 시설은 대표점 위치에 따라 포함 여부가 갈립니다.<br>
-    인증키는 환경변수로만 주입하며 이 저장소의 어떤 파일에도 들어 있지 않습니다.
+    경계 안팎 판정과 읍면동 귀속은 모두 피처의 대표점 기준입니다.
+    면적과 도로 연장은 위경도를 중위도 정사영으로 환산한 근사값입니다.<br>
+    인증키는 환경변수로만 쓰며 이 저장소의 어떤 파일에도 들어 있지 않습니다. 이 페이지는 API를 호출하지 않습니다.
   </footer>
 </div>
-
 <script>
-const BAR = [
-  ["고덕동", 107.9, 29], ["진위면", 50.7, 14], ["포승읍", 48.1, 11], ["고덕면", 28.8, 8],
-  ["죽백동", 27.7, 1], ["비전동", 21.6, 20], ["서정동", 19.0, 12], ["팽성읍", 17.6, 23]
-];
-const DONUT = [
-  ["녹지", 773], ["공원", 469], ["공공공지", 191], ["광장", 93],
-  ["기타도시공간시설", 2], ["미분류", 1]
-];
-const HL_BAR = "고덕동", HL_DONUT = "공원";
+const DATA = [{"code":"41220128","name":"고덕동","full_nm":"경기도 평택시 고덕동","level":"읍면동","area_km2":16.64,"bbox":[127.01195,37.02481,127.06893,37.07421],"retrieved_on":"2026-10-12","ring":[[[127.01195,37.04985],[127.01227,37.05035],[127.01261,37.05167],[127.01271,37.0518],[127.01444,37.05254],[127.01424,37.05339],[127.01429,37.05601],[127.01304,37.05606],[127.0145,37.05709],[127.01523,37.05764],[127.01675,37.0582],[127.01735,37.05856],[127.01855,37.05842],[127.01906,37.05844],[127.02005,37.05867],[127.02051,37.05915],[127.02126,37.05989],[127.02152,37.06011],[127.02269,37.06028],[127.02452,37.06147],[127.0266,37.06164],[127.02909,37.06124],[127.03019,37.06108],[127.0325,37.06072],[127.03625,37.06182],[127.03736,37.0623],[127.03898,37.06172],[127.03922,37.06185],[127.03952,37.06333],[127.03972,37.06414],[127.04054,37.06543],[127.0407,37.06562],[127.04162,37.06615],[127.04202,37.06663],[127.04191,37.06911],[127.04163,37.07047],[127.04028,37.07314],[127.04025,37.07415],[127.04173,37.07417],[127.04254,37.07402],[127.04343,37.07376],[127.04397,37.07345],[127.04573,37.07242],[127.04693,37.07171],[127.04948,37.06994],[127.0501,37.06932],[127.05141,37.06794],[127.05212,37.06716],[127.05378,37.06631],[127.05373,37.06583],[127.05302,37.06048],[127.05294,37.05971],[127.05232,37.05752],[127.05219,37.05639],[127.05219,37.05488],[127.05208,37.05412],[127.05216,37.05223],[127.05208,37.05194],[127.052,37.0509],[127.0519,37.05029],[127.05234,37.04873],[127.05301,37.04751],[127.05334,37.04711],[127.05374,37.04653],[127.05507,37.04559],[127.05712,37.04435],[127.05763,37.04403],[127.06088,37.04195],[127.06174,37.04138],[127.06511,37.03924],[127.06662,37.03802],[127.0682,37.03505],[127.06841,37.03497],[127.06867,37.0328],[127.06881,37.03122],[127.06862,37.02947],[127.06893,37.02663],[127.0678,37.0262],[127.06764,37.02595],[127.06707,37.02586],[127.0648,37.02552],[127.05839,37.02511],[127.05423,37.02496],[127.05176,37.02498],[127.05114,37.02503],[127.04616,37.02492],[127.04594,37.02486],[127.04209,37.02502],[127.04068,37.02516],[127.03908,37.02516],[127.03644,37.0256],[127.03589,37.02606],[127.03401,37.02614],[127.02987,37.02652],[127.02917,37.02657],[127.02663,37.02688],[127.02628,37.02687],[127.02462,37.02678],[127.02382,37.02668],[127.0232,37.02671],[127.02297,37.02667],[127.02176,37.02663],[127.02042,37.02637],[127.01916,37.02664],[127.01914,37.02738],[127.01914,37.02995],[127.01928,37.0302],[127.01972,37.0308],[127.02098,37.03171],[127.01857,37.03405],[127.01806,37.03452],[127.01722,37.0354],[127.01706,37.03569],[127.01686,37.03634],[127.01685,37.03772],[127.01565,37.04144],[127.01541,37.04098],[127.01421,37.04108],[127.01323,37.04464],[127.01222,37.049],[127.01195,37.04985]]],"facility_total":366,"by_class":[["녹지",214],["공원",77],["공공공지",66],["광장",9]],"by_exec":[["집행완료",225],["미집행",141]],"park_type":[["어린이공원",32,9.0],["기타공원시설",26,57.6],["근린공원",18,145.9],["체육공원",1,2.2]],"undone_area_ha":153.5,"zones":[["제1종일반주거지역",24,232.7,13.2],["제2종일반주거지역",18,79.6,4.5],["준주거지역",16,116.7,6.6],["자연녹지지역",9,389.9,22.1],["일반상업지역",7,61.9,3.5],["근린상업지역",6,30.4,1.7],["제3종일반주거지역",5,427.6,24.3],["일반공업지역",1,367.8,20.9],["유통상업지역",1,9.2,0.5],["준공업지역",1,7.8,0.4],["중심상업지역",1,36.3,2.1],["생산관리지역",1,1.4,0.1]],"zone_total_ha":1761.4,"zone_over_ratio":1.06,"roads":[["시·군도",131.6,1222],["지방도",10.8,72],["고속국도",1.4,3]],"with_roads":true,"layers":{"시설":"LT_C_UPISUQ153","용도지역":"LT_C_UQ111·UQ112·UQ113","도로":"LT_L_MOCTLINK","경계":"LT_C_ADEMD_INFO"},"parks":[{"x":127.04354,"y":37.04039,"t":"기타공원시설","e":"집행완료","a":12072,"n":"수변공원"},{"x":127.03026,"y":37.04732,"t":"어린이공원","e":"미집행","a":2349,"n":"어린이공원"},{"x":127.02486,"y":37.05669,"t":"어린이공원","e":"미집행","a":2268,"n":"어린이공원"},{"x":127.02834,"y":37.05883,"t":"근린공원","e":"미집행","a":33167,"n":"근린공원"},{"x":127.0329,"y":37.06019,"t":"근린공원","e":"미집행","a":48121,"n":"근린공원"},{"x":127.04111,"y":37.03687,"t":"기타공원시설","e":"집행완료","a":30161,"n":"수변공원"},{"x":127.03223,"y":37.05525,"t":"기타공원시설","e":"집행완료","a":148147,"n":"기타공원시설"},{"x":127.03655,"y":37.04122,"t":"근린공원","e":"미집행","a":668515,"n":"근린공원"},{"x":127.04495,"y":37.03949,"t":"어린이공원","e":"집행완료","a":3527,"n":"어린이공원"},{"x":127.05043,"y":37.0467,"t":"어린이공원","e":"집행완료","a":2134,"n":"어린이공원"},{"x":127.04847,"y":37.05024,"t":"기타공원시설","e":"집행완료","a":8284,"n":"기타공원시설"},{"x":127.04888,"y":37.06379,"t":"어린이공원","e":"집행완료","a":1509,"n":"어린이공원"},{"x":127.03216,"y":37.03151,"t":"어린이공원","e":"집행완료","a":1716,"n":"어린이공원"},{"x":127.04792,"y":37.04338,"t":"기타공원시설","e":"집행완료","a":10412,"n":"수변공원"},{"x":127.02958,"y":37.02802,"t":"기타공원시설","e":"집행완료","a":4611,"n":"수변공원"},{"x":127.03407,"y":37.03026,"t":"기타공원시설","e":"집행완료","a":33752,"n":"기타공원시설"},{"x":127.03307,"y":37.02725,"t":"기타공원시설","e":"집행완료","a":67611,"n":"수변공원"},{"x":127.01512,"y":37.05011,"t":"근린공원","e":"집행완료","a":36471,"n":"근린공원"},{"x":127.04114,"y":37.05162,"t":"어린이공원","e":"집행완료","a":3898,"n":"어린이공원"},{"x":127.03172,"y":37.04612,"t":"어린이공원","e":"집행완료","a":2332,"n":"어린이공원"},{"x":127.03749,"y":37.03349,"t":"기타공원시설","e":"집행완료","a":7587,"n":"수변공원"},{"x":127.02325,"y":37.0361,"t":"어린이공원","e":"집행완료","a":5077,"n":"어린이공원"},{"x":127.01885,"y":37.03716,"t":"어린이공원","e":"집행완료","a":2270,"n":"어린이공원"},{"x":127.0149,"y":37.04293,"t":"어린이공원","e":"집행완료","a":1485,"n":"어린이공원"},{"x":127.04681,"y":37.05714,"t":"어린이공원","e":"집행완료","a":2543,"n":"어린이공원"},{"x":127.02526,"y":37.05578,"t":"어린이공원","e":"미집행","a":2184,"n":"어린이공원"},{"x":127.02538,"y":37.04957,"t":"어린이공원","e":"집행완료","a":7309,"n":"어린이공원"},{"x":127.01503,"y":37.04655,"t":"근린공원","e":"집행완료","a":25432,"n":"근린공원"},{"x":127.02928,"y":37.05866,"t":"어린이공원","e":"미집행","a":1522,"n":"어린이공원"},{"x":127.04785,"y":37.04639,"t":"기타공원시설","e":"미집행","a":25308,"n":"기타공원시설"},{"x":127.04359,"y":37.03588,"t":"어린이공원","e":"집행완료","a":1709,"n":"어린이공원"},{"x":127.0459,"y":37.03771,"t":"어린이공원","e":"집행완료","a":3374,"n":"어린이공원"},{"x":127.0492,"y":37.04221,"t":"어린이공원","e":"집행완료","a":1864,"n":"어린이공원"},{"x":127.05215,"y":37.04329,"t":"어린이공원","e":"집행완료","a":1849,"n":"어린이공원"},{"x":127.04589,"y":37.05235,"t":"어린이공원","e":"집행완료","a":2104,"n":"어린이공원"},{"x":127.04877,"y":37.06162,"t":"어린이공원","e":"집행완료","a":5657,"n":"어린이공원"},{"x":127.04475,"y":37.06374,"t":"어린이공원","e":"집행완료","a":1907,"n":"어린이공원"},{"x":127.01949,"y":37.0518,"t":"근린공원","e":"집행완료","a":38269,"n":"근린공원"},{"x":127.04034,"y":37.05612,"t":"어린이공원","e":"미집행","a":6762,"n":"어린이공원"},{"x":127.02284,"y":37.05553,"t":"어린이공원","e":"미집행","a":2349,"n":"어린이공원"},{"x":127.04895,"y":37.04559,"t":"기타공원시설","e":"집행완료","a":13433,"n":"수변공원"},{"x":127.02304,"y":37.05653,"t":"어린이공원","e":"미집행","a":1526,"n":"어린이공원"},{"x":127.01743,"y":37.05432,"t":"근린공원","e":"집행완료","a":26171,"n":"근린공원"},{"x":127.01411,"y":37.04145,"t":"어린이공원","e":"집행완료","a":3884,"n":"어린이공원"},{"x":127.0312,"y":37.03003,"t":"기타공원시설","e":"집행완료","a":60974,"n":"수변공원"},{"x":127.02158,"y":37.05916,"t":"근린공원","e":"미집행","a":23426,"n":"근린공원"},{"x":127.02486,"y":37.0431,"t":"근린공원","e":"집행완료","a":26479,"n":"근린공원"},{"x":127.02653,"y":37.03343,"t":"근린공원","e":"집행완료","a":12119,"n":"근린공원"},{"x":127.04699,"y":37.04384,"t":"기타공원시설","e":"집행완료","a":11793,"n":"기타공원시설"},{"x":127.01347,"y":37.04434,"t":"어린이공원","e":"미집행","a":4624,"n":"어린이공원"},{"x":127.01844,"y":37.05819,"t":"기타공원시설","e":"미집행","a":89408,"n":"기타 공원시설"},{"x":127.04301,"y":37.07071,"t":"근린공원","e":"집행완료","a":171506,"n":"근린공원"},{"x":127.04985,"y":37.05028,"t":"체육공원","e":"미집행","a":22043,"n":"체육공원"},{"x":127.05152,"y":37.06619,"t":"기타공원시설","e":"미집행","a":12594,"n":"기타 공원시설"},{"x":127.05192,"y":37.06551,"t":"기타공원시설","e":"미집행","a":2750,"n":"기타 공원시설"},{"x":127.05269,"y":37.06549,"t":"기타공원시설","e":"미집행","a":2531,"n":"기타 공원시설"},{"x":127.04978,"y":37.06597,"t":"기타공원시설","e":"미집행","a":42,"n":"기타 공원시설"},{"x":127.0494,"y":37.06794,"t":"기타공원시설","e":"미집행","a":1770,"n":"기타 공원시설"},{"x":127.04777,"y":37.06897,"t":"기타공원시설","e":"미집행","a":1784,"n":"기타 공원시설"},{"x":127.04647,"y":37.06978,"t":"기타공원시설","e":"미집행","a":3926,"n":"기타 공원시설"},{"x":127.04474,"y":37.07075,"t":"기타공원시설","e":"미집행","a":2322,"n":"기타 공원시설"},{"x":127.02935,"y":37.04048,"t":"어린이공원","e":"미집행","a":2790,"n":"어린이공원"},{"x":127.0491,"y":37.03784,"t":"기타공원시설","e":"집행완료","a":2239,"n":"기타공원시설"},{"x":127.04145,"y":37.0346,"t":"기타공원시설","e":"집행완료","a":2281,"n":"기타공원시설"},{"x":127.02075,"y":37.04135,"t":"근린공원","e":"집행완료","a":62123,"n":"근린공원"},{"x":127.04443,"y":37.04017,"t":"기타공원시설","e":"집행완료","a":11783,"n":"수변공원"},{"x":127.03643,"y":37.03339,"t":"기타공원시설","e":"집행완료","a":8677,"n":"수변공원"},{"x":127.02631,"y":37.03209,"t":"어린이공원","e":"집행완료","a":2280,"n":"어린이공원"},{"x":127.0416,"y":37.04238,"t":"근린공원","e":"미집행","a":11426,"n":"근린공원"},{"x":127.03942,"y":37.0332,"t":"어린이공원","e":"집행완료","a":1585,"n":"어린이공원"},{"x":127.03399,"y":37.05119,"t":"어린이공원","e":"집행완료","a":1491,"n":"어린이공원"},{"x":127.01722,"y":37.05573,"t":"어린이공원","e":"미집행","a":1770,"n":"어린이공원"},{"x":127.01982,"y":37.04669,"t":"근린공원","e":"집행완료","a":63460,"n":"근린공원"},{"x":127.05051,"y":37.0382,"t":"근린공원","e":"미집행","a":12051,"n":"근린공원"},{"x":127.04754,"y":37.0365,"t":"근린공원","e":"미집행","a":42263,"n":"근린공원"},{"x":127.06584,"y":37.02603,"t":"근린공원","e":"집행완료","a":111123,"n":"근린공원"},{"x":127.05463,"y":37.04142,"t":"근린공원","e":"미집행","a":47314,"n":"근린공원"}]},{"code":"41220310","name":"진위면","full_nm":"경기도 평택시 진위면","level":"읍면동","area_km2":34.03,"bbox":[127.0393,37.0758,127.12637,37.14467],"retrieved_on":"2026-10-12","ring":[[[127.11486,37.14431],[127.11917,37.14394],[127.12086,37.14095],[127.12156,37.13803],[127.12077,37.1317],[127.12032,37.12925],[127.11272,37.12749],[127.109,37.12557],[127.10941,37.12149],[127.10978,37.11872],[127.11174,37.11476],[127.11265,37.11329],[127.11476,37.10867],[127.11579,37.10634],[127.11806,37.10134],[127.11881,37.09977],[127.12082,37.09524],[127.1221,37.09254],[127.12425,37.08903],[127.12593,37.08695],[127.12494,37.0847],[127.12561,37.08358],[127.12497,37.07957],[127.12436,37.07779],[127.1183,37.07663],[127.11531,37.07622],[127.10693,37.07615],[127.10275,37.07619],[127.09276,37.0793],[127.09079,37.08042],[127.08477,37.08262],[127.08221,37.08317],[127.08012,37.08429],[127.0801,37.08513],[127.07997,37.08654],[127.0794,37.08673],[127.07964,37.08787],[127.0797,37.08856],[127.07942,37.09017],[127.07875,37.09075],[127.07763,37.09177],[127.07727,37.09228],[127.07626,37.09363],[127.07645,37.09397],[127.07481,37.09355],[127.07357,37.09306],[127.07165,37.09276],[127.07011,37.09271],[127.0683,37.09287],[127.06692,37.09287],[127.06486,37.09221],[127.06435,37.09196],[127.06325,37.0911],[127.06202,37.09121],[127.05951,37.09121],[127.05861,37.09133],[127.05458,37.09211],[127.05418,37.09329],[127.04828,37.09581],[127.04714,37.09321],[127.04111,37.09527],[127.0422,37.09845],[127.04238,37.09914],[127.04024,37.09867],[127.04083,37.10151],[127.04879,37.10568],[127.04709,37.10772],[127.05089,37.1129],[127.05104,37.11604],[127.05016,37.12508],[127.05246,37.12623],[127.05246,37.13108],[127.05457,37.13257],[127.05732,37.13261],[127.06008,37.13232],[127.06507,37.13119],[127.06564,37.1312],[127.06637,37.13079],[127.0662,37.13015],[127.06619,37.12922],[127.06622,37.12829],[127.06634,37.12751],[127.0667,37.1272],[127.06734,37.12708],[127.06889,37.12807],[127.07109,37.12578],[127.07264,37.12594],[127.07442,37.12576],[127.07475,37.12614],[127.07577,37.12676],[127.07658,37.12707],[127.0785,37.12766],[127.0791,37.1281],[127.08005,37.12599],[127.08126,37.12628],[127.08217,37.12627],[127.08266,37.12634],[127.08297,37.12702],[127.08386,37.12725],[127.08533,37.12697],[127.08633,37.12668],[127.08903,37.12841],[127.08935,37.12893],[127.09019,37.12974],[127.08997,37.12993],[127.0907,37.12989],[127.09126,37.12976],[127.09292,37.12942],[127.09143,37.13073],[127.09161,37.13127],[127.09025,37.13219],[127.08794,37.13444],[127.08844,37.13493],[127.09091,37.13659],[127.09539,37.13664],[127.09755,37.13871],[127.09932,37.13997],[127.10168,37.14278],[127.10375,37.14327],[127.11185,37.14413],[127.11486,37.14431]]],"facility_total":72,"by_class":[["녹지",42],["공원",17],["광장",9],["공공공지",4]],"by_exec":[["미집행",54],["집행완료",18]],"park_type":[["근린공원",8,51.9],["기타공원시설",5,1.3],["어린이공원",4,0.8]],"undone_area_ha":83.6,"zones":[["보전관리지역",102,334.2,10.7],["생산관리지역",82,167.7,5.4],["계획관리지역",41,160.1,5.1],["자연녹지지역",29,354.3,11.3],["제1종일반주거지역",19,82.8,2.6],["농림지역",13,1320.6,42.2],["생산녹지지역",10,34.5,1.1],["일반공업지역",10,293.2,9.4],["보전녹지지역",5,359.6,11.5],["제2종일반주거지역",3,12.8,0.4],["준공업지역",3,8.3,0.3],["관리지역",3,0.0,0.0]],"zone_total_ha":3132.0,"zone_over_ratio":0.92,"roads":[["시·군도",83.4,594],["지방도",31.0,204],["일반국도",7.7,52],["고속국도",5.9,8]],"with_roads":true,"layers":{"시설":"LT_C_UPISUQ153","용도지역":"LT_C_UQ111·UQ112·UQ113","도로":"LT_L_MOCTLINK","경계":"LT_C_ADEMD_INFO"},"parks":[{"x":127.08544,"y":37.10638,"t":"근린공원","e":"미집행","a":353252,"n":"근린공원"},{"x":127.09431,"y":37.12588,"t":"근린공원","e":"집행완료","a":19940,"n":"근린공원"},{"x":127.07016,"y":37.12519,"t":"근린공원","e":"미집행","a":13880,"n":"근린공원"},{"x":127.07697,"y":37.12354,"t":"근린공원","e":"미집행","a":12439,"n":"근린공원"},{"x":127.08265,"y":37.12278,"t":"근린공원","e":"집행완료","a":12100,"n":"근린공원"},{"x":127.07938,"y":37.10873,"t":"근린공원","e":"미집행","a":52945,"n":"근린공원"},{"x":127.07572,"y":37.10909,"t":"근린공원","e":"미집행","a":36540,"n":"근린공원"},{"x":127.08832,"y":37.09877,"t":"어린이공원","e":"미집행","a":1687,"n":"어린이공원"},{"x":127.07239,"y":37.10817,"t":"어린이공원","e":"미집행","a":2527,"n":"어린이공원"},{"x":127.06395,"y":37.11224,"t":"어린이공원","e":"미집행","a":1542,"n":"어린이공원"},{"x":127.07476,"y":37.11751,"t":"어린이공원","e":"미집행","a":2108,"n":"어린이공원"},{"x":127.07434,"y":37.10753,"t":"기타공원시설","e":"미집행","a":133,"n":"기타공원시설"},{"x":127.08736,"y":37.11337,"t":"근린공원","e":"미집행","a":18358,"n":"근린공원"},{"x":127.10471,"y":37.08331,"t":"기타공원시설","e":"미집행","a":1380,"n":"기타공원시설"},{"x":127.06277,"y":37.11056,"t":"기타공원시설","e":"집행완료","a":1599,"n":"기타공원시설"},{"x":127.0987,"y":37.08466,"t":"기타공원시설","e":"미집행","a":1424,"n":"기타공원시설"},{"x":127.09405,"y":37.08897,"t":"기타공원시설","e":"미집행","a":8543,"n":"기타공원시설"}]}];
+const $ = (id) => document.getElementById(id);
 const css = (n) => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = (n) => Number(n).toLocaleString("ko-KR");
+const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const COLORS = ["--a1", "--a2"];
+const parkCount = (d) => d.park_type.reduce((s, r) => s + r[1], 0);
+const parkHa = (d) => d.park_type.reduce((s, r) => s + r[2], 0);
+const execOf = (d, k) => (Object.fromEntries(d.by_exec)[k] || 0);
+const roadKm = (d) => d.roads.reduce((s, r) => s + r[1], 0);
 
-function drawBar() {
-  const svg = document.getElementById("bar");
-  const w = svg.clientWidth || 640;
-  const narrow = w < 420;
-  const labelW = narrow ? 52 : 62;
-  const m = { top: 6, right: narrow ? 52 : 66, bottom: 26, left: labelW };
-  const rowH = narrow ? 30 : 34;
-  const h = m.top + m.bottom + BAR.length * rowH;
-  const max = Math.max(...BAR.map((d) => d[1]));
-  const plot = w - m.left - m.right;
-  const x = (v) => m.left + (v / max) * plot;
+function draw() {
+  const [a, b] = DATA;
+  const each = (fn) => DATA.map((d, i) => fn(d, i)).join("");
+  const sec = (t, inner) => `<h3 class="sec">${t}</h3><div class="pair">${inner}</div>`;
+  $("out").innerHTML = vsHead(a, b) + diverging(a, b) +
+    sec("지도", each((d, i) => card(i, d, "지도", "점 하나가 공원 한 곳 · 크기는 결정면적",
+      `<svg id="map${i}" role="img" aria-label="${esc(d.name)} 공원 분포"></svg><div class="legend" id="mapLeg${i}"></div>`,
+      srcLine(d, d.layers["경계"] + " 경계 + " + d.layers["시설"],
+        "<b>주의</b> 두 지도는 축척이 다릅니다 — 왼쪽 아래 축척 막대로 견주세요")))) +
+    sec("공원 유형별 건수 (비교 · 막대)", each((d, i) => card(i, d, "공원 유형", "가로축 건수 · 두 지역 같은 눈금",
+      `<svg id="park${i}" role="img" aria-label="${esc(d.name)} 공원 유형별 건수"></svg>`,
+      srcLine(d, d.layers["시설"] + " 중 대분류 공원", "<b>단위</b> 건")))) +
+    sec("도시계획시설 대분류 구성비 (구성 · 도넛)", each((d, i) => card(i, d, "구성비", "기준 대분류 건수 · 합 100%",
+      `<svg id="donut${i}" role="img" aria-label="${esc(d.name)} 대분류 구성비"></svg><div class="legend" id="donutLeg${i}"></div>`,
+      srcLine(d, d.layers["시설"], `<b>단위</b> 건 · 전체 ${fmt(d.facility_total)}건 대비`)))) +
+    sec("도로 위계별 연장", each((d, i) => card(i, d, "도로망", "가로축 연장(km) · 두 지역 같은 눈금",
+      `<svg id="road${i}" role="img" aria-label="${esc(d.name)} 도로 위계별 연장"></svg>`,
+      srcLine(d, d.layers["도로"], "<b>단위</b> km")))) +
+    sec("용도지역 구성", each((d, i) => card(i, d, "용도지역", "면적 기준 상위 12종",
+      `<div style="max-height:17rem;overflow:auto"><table id="zone${i}">
+        <thead><tr><th>용도지역</th><th class="n">건수</th><th class="n">면적 ha</th><th class="n">비중</th></tr></thead>
+        <tbody></tbody></table></div>`, zoneSrc(d))));
 
-  const parts = [];
-  const ticks = [0, 30, 60, 90, 120].filter((t) => t <= max * 1.05);
-  ticks.forEach((t) => {
-    parts.push(`<line x1="${x(t)}" x2="${x(t)}" y1="${m.top}" y2="${h - m.bottom}"
-      stroke="${css("--line")}" stroke-width="1"/>`);
-    parts.push(`<text x="${x(t)}" y="${h - m.bottom + 15}" text-anchor="middle"
-      font-size="10" fill="${css("--mute")}">${t}</text>`);
+  const maxPark = Math.max(1, ...DATA.flatMap((d) => d.park_type.map((r) => r[1])));
+  const maxRoad = Math.max(1, ...DATA.flatMap((d) => d.roads.map((r) => r[1])));
+  DATA.forEach((d, i) => {
+    drawMap(i, d);
+    drawBars("park" + i, d.park_type.map((r) => [r[0], r[1], r[2] + " ha"]), "건", 0, maxPark, i);
+    drawBars("road" + i, d.roads.map((r) => [r[0], r[1], fmt(r[2]) + "개"]), "km", 1, maxRoad, i);
+    drawDonut(i, d.by_class);
+    $("zone" + i).querySelector("tbody").innerHTML = d.zones.map((r) =>
+      `<tr><td>${esc(r[0])}</td><td class="n">${fmt(r[1])}</td><td class="n">${r[2].toFixed(1)}</td><td class="n">${r[3].toFixed(1)}%</td></tr>`).join("");
   });
-  parts.push(`<text x="${w - m.right}" y="${h - m.bottom + 15}" text-anchor="end"
-    font-size="10" fill="${css("--mute")}">ha</text>`);
+}
 
-  BAR.forEach((d, i) => {
-    const [name, ha, cnt] = d;
-    const y = m.top + i * rowH + 4;
-    const bh = rowH - 12;
-    const on = name === HL_BAR;
-    parts.push(`<rect x="${m.left}" y="${y}" width="${Math.max(2, x(ha) - m.left)}"
-      height="${bh}" rx="3" fill="${on ? css("--warn") : css("--accent")}"
-      fill-opacity="${on ? 1 : 0.78}"/>`);
-    parts.push(`<text x="${m.left - 6}" y="${y + bh / 2}" dy="0.35em" text-anchor="end"
-      font-size="${narrow ? 10 : 11}" font-weight="${on ? 700 : 400}"
-      fill="${on ? css("--warn") : css("--ink")}">${name}</text>`);
-    parts.push(`<text x="${x(ha) + 6}" y="${y + bh / 2}" dy="0.35em"
-      font-size="${narrow ? 9.5 : 10.5}" fill="${css("--mute")}">${ha.toFixed(1)}${narrow ? "" : " ("+cnt+"곳)"}</text>`);
+function vsHead(a, b) {
+  return `<div class="vs">
+    <div class="who l"><div class="nm">${esc(a.name)}</div>
+      <div class="sm">${esc(a.full_nm)} · ${esc(a.level)} · ${a.area_km2.toFixed(2)} ㎢</div></div>
+    <div class="mid">vs</div>
+    <div class="who r"><div class="nm">${esc(b.name)}</div>
+      <div class="sm">${esc(b.full_nm)} · ${esc(b.level)} · ${b.area_km2.toFixed(2)} ㎢</div></div>
+  </div>`;
+}
+
+function diverging(a, b) {
+  const rows = [
+    ["도시계획시설", a.facility_total, b.facility_total, 0, "건"],
+    ["공원", parkCount(a), parkCount(b), 0, "곳"],
+    ["공원 결정면적", parkHa(a), parkHa(b), 1, "ha"],
+    ["미집행", execOf(a, "미집행"), execOf(b, "미집행"), 0, "건"],
+    ["미집행 결정면적", a.undone_area_ha, b.undone_area_ha, 1, "ha"],
+    ["집행완료", execOf(a, "집행완료"), execOf(b, "집행완료"), 0, "건"],
+    ["대상 면적", a.area_km2, b.area_km2, 2, "㎢"],
+    ["면적당 시설", a.facility_total / a.area_km2, b.facility_total / b.area_km2, 1, "건/㎢"],
+    ["도로망 연장", roadKm(a), roadKm(b), 1, "km"],
+    ["도로밀도", roadKm(a) / a.area_km2, roadKm(b) / b.area_km2, 2, "km/㎢"],
+  ];
+  const body = rows.map(([k, v1, v2, dec, unit]) => {
+    const mx = Math.max(v1, v2) || 1;
+    const win1 = v1 > v2, tie = v1 === v2;
+    const r = tie ? "" : (win1 ? (v2 ? v1 / v2 : 0) : (v1 ? v2 / v1 : 0));
+    const rt = tie ? "같음"
+      : `${win1 ? "◀ 1번이 " : "2번이 "}${r ? r.toFixed(r >= 10 ? 0 : 1) + "배 " : ""}큼${win1 ? "" : " ▶"}`;
+    return `<div class="dv">
+      <div class="dv-l"><span class="v ${win1 || tie ? "" : "dim"}">${v1.toFixed(dec)}</span>
+        <i style="width:${(v1 / mx) * 100}%"></i></div>
+      <div class="mid"><div class="k">${esc(k)} <span style="color:var(--mute)">${esc(unit)}</span></div>
+        <div class="ratio">${esc(rt)}</div></div>
+      <div class="dv-r"><i style="width:${(v2 / mx) * 100}%"></i>
+        <span class="v ${!win1 || tie ? "" : "dim"}">${v2.toFixed(dec)}</span></div>
+    </div>`;
+  }).join("");
+  return `<div class="dvs">${body}</div>
+    <p class="src" style="border:0;padding:0">막대 길이는 두 값 중 큰 쪽을 100%로 둔 상대 길이입니다 ·
+      조회일 1번 ${esc(a.retrieved_on)} · 2번 ${esc(b.retrieved_on)}</p>`;
+}
+
+function card(i, d, kind, sub, body, src) {
+  return `<section class="card" data-i="${i}">
+    <h4><span class="num">${i + 1}</span>${esc(d.name)} — ${esc(kind)}</h4>
+    <p class="sub">${esc(sub)}</p>${body}${src ? `<div class="src">${src}</div>` : ""}</section>`;
+}
+function srcLine(d, layer, extra) {
+  return `<b>지역</b> ${esc(d.full_nm)} (${esc(d.code)}) · ${esc(d.level)}<br>` +
+    `<b>출처</b> 브이월드 2D 데이터 API 2.0 · ${esc(layer)}<br><b>조회일</b> ${esc(d.retrieved_on)}` +
+    (extra ? "<br>" + extra : "");
+}
+function zoneSrc(d) {
+  const over = d.zone_over_ratio || 0;
+  return srcLine(d, "LT_C_UQ111 도시지역 · UQ112 관리지역 · UQ113 농림",
+    over > 1.3
+      ? `<b>주의</b> 용도지역 면적 합 ${d.zone_total_ha} ha가 대상 면적의 ${over}배입니다. 대표점 귀속 탓이므로 건수를 함께 읽으세요.`
+      : "<b>주의</b> 현행 지정만 수신 · 비중은 상대 비교용");
+}
+
+function drawBars(id, rows, unit, dec, sharedMax, slot) {
+  const svg = $(id);
+  if (!svg) return;
+  if (!rows.length) { svg.innerHTML = ""; svg.setAttribute("height", 0); return; }
+  const w = svg.clientWidth || 380, narrow = w < 340;
+  let lw = 0; rows.forEach((r) => { lw = Math.max(lw, String(r[0]).length); });
+  const m = { top: 4, right: narrow ? 44 : 58, bottom: 21, left: Math.min(narrow ? 72 : 96, lw * 11 + 8) };
+  const rowH = 27, h = m.top + m.bottom + rows.length * rowH;
+  const max = sharedMax || 1;
+  const x = (v) => m.left + (v / max) * (w - m.left - m.right);
+  const out = [`<line x1="${m.left}" x2="${w - m.right}" y1="${h - m.bottom}" y2="${h - m.bottom}" stroke="${css("--line")}"/>`];
+  [0, max / 2, max].forEach((t) => out.push(
+    `<text x="${x(t)}" y="${h - m.bottom + 13}" text-anchor="middle" font-size="9" fill="${css("--mute")}">${t.toFixed(dec)}</text>`));
+  out.push(`<text x="${w - m.right + 4}" y="${h - m.bottom + 13}" font-size="9" fill="${css("--mute")}">${unit}</text>`);
+  rows.forEach((r, i) => {
+    const y = m.top + i * rowH + 3, bh = rowH - 11;
+    out.push(`<rect x="${m.left}" y="${y}" width="${Math.max(2, x(r[1]) - m.left)}" height="${bh}" rx="3"
+      fill="${css(COLORS[slot])}" fill-opacity="${i === 0 ? 1 : .6}"/>`);
+    out.push(`<text x="${m.left - 5}" y="${y + bh / 2}" dy="0.35em" text-anchor="end" font-size="9.5" fill="${css("--ink")}">${esc(r[0])}</text>`);
+    out.push(`<text x="${x(r[1]) + 5}" y="${y + bh / 2}" dy="0.35em" font-size="9" fill="${css("--mute")}">${r[1].toFixed(dec)}${narrow ? "" : " · " + esc(r[2])}</text>`);
   });
   svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
   svg.setAttribute("height", h);
-  svg.innerHTML = parts.join("");
+  svg.innerHTML = out.join("");
 }
 
-function drawDonut() {
-  const svg = document.getElementById("donut");
-  const w = svg.clientWidth || 640;
-  const size = Math.min(w, 300);
-  const h = size;
-  const cx = w / 2, cy = h / 2;
-  const R = size * 0.42, r = size * 0.25;
-  const total = DONUT.reduce((s, d) => s + d[1], 0);
-  const base = css("--accent"), soft = css("--accent-soft"), warn = css("--warn");
-  const shades = [0.95, 0, 0.6, 0.42, 0.3, 0.22];
-
+function drawDonut(i, rows) {
+  const svg = $("donut" + i), legend = $("donutLeg" + i);
+  if (!svg || !rows.length) return;
+  const w = svg.clientWidth || 340, size = Math.min(w, 210), h = size;
+  const cx = w / 2, cy = h / 2, R = size * .42, r = size * .25;
+  const total = rows.reduce((s, d) => s + d[1], 0) || 1;
+  const out = [], leg = [];
   let a0 = -Math.PI / 2;
-  const parts = [], legend = [], rows = [];
-  DONUT.forEach((d, i) => {
-    const [name, v] = d;
-    const frac = v / total;
-    const a1 = a0 + frac * Math.PI * 2;
-    const on = name === HL_DONUT;
-    const fill = on ? warn : (i === 0 ? base : soft);
-    const op = on ? 1 : (i === 0 ? 0.9 : Math.max(0.3, shades[i] || 0.3));
-    const large = a1 - a0 > Math.PI ? 1 : 0;
-    const p = (ang, rad) => [cx + Math.cos(ang) * rad, cy + Math.sin(ang) * rad];
-    const [x0, y0] = p(a0, R), [x1, y1] = p(a1, R), [x2, y2] = p(a1, r), [x3, y3] = p(a0, r);
-    parts.push(`<path d="M${x0} ${y0} A${R} ${R} 0 ${large} 1 ${x1} ${y1}
-      L${x2} ${y2} A${r} ${r} 0 ${large} 0 ${x3} ${y3} Z"
-      fill="${fill}" fill-opacity="${op}" stroke="${css("--panel")}" stroke-width="1.5"/>`);
-    legend.push(`<span><i class="sw" style="background:${fill};opacity:${op}"></i>${name}</span>`);
-    rows.push(`<tr><td${on ? ' class="hl"' : ""}>${name}</td><td class="n">${v.toLocaleString()}</td>
-      <td class="n">${(frac * 100).toFixed(1)}%</td></tr>`);
+  rows.forEach((d, k) => {
+    const frac = d[1] / total, a1 = a0 + frac * Math.PI * 2;
+    const op = Math.max(.22, 1 - k * .14), large = a1 - a0 > Math.PI ? 1 : 0;
+    const P = (a, rad) => [cx + Math.cos(a) * rad, cy + Math.sin(a) * rad];
+    const [x0, y0] = P(a0, R), [x1, y1] = P(a1, R), [x2, y2] = P(a1, r), [x3, y3] = P(a0, r);
+    out.push(`<path d="M${x0} ${y0} A${R} ${R} 0 ${large} 1 ${x1} ${y1} L${x2} ${y2}
+      A${r} ${r} 0 ${large} 0 ${x3} ${y3} Z" fill="${css(COLORS[i])}" fill-opacity="${op}"
+      stroke="${css("--panel")}" stroke-width="1.3"/>`);
+    leg.push(`<span><i class="sw" style="background:${css(COLORS[i])};opacity:${op}"></i>${esc(d[0])} ${fmt(d[1])} (${(frac * 100).toFixed(1)}%)</span>`);
     a0 = a1;
   });
-  parts.push(`<text x="${cx}" y="${cy - 6}" text-anchor="middle" font-size="20"
-    font-weight="600" fill="${css("--ink")}">1,529</text>`);
-  parts.push(`<text x="${cx}" y="${cy + 14}" text-anchor="middle" font-size="10.5"
-    fill="${css("--mute")}">전체 건수</text>`);
+  out.push(`<text x="${cx}" y="${cy - 3}" text-anchor="middle" font-size="16" font-weight="600" fill="${css("--ink")}">${fmt(total)}</text>`);
+  out.push(`<text x="${cx}" y="${cy + 13}" text-anchor="middle" font-size="9" fill="${css("--mute")}">전체 건수</text>`);
   svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
   svg.setAttribute("height", h);
-  svg.innerHTML = parts.join("");
-  document.getElementById("legend").innerHTML = legend.join("");
-  document.querySelector("#tbl tbody").innerHTML = rows.join("");
+  svg.innerHTML = out.join("");
+  legend.innerHTML = leg.join("");
 }
 
-function draw() { drawBar(); drawDonut(); }
+function drawMap(i, d) {
+  const svg = $("map" + i), legend = $("mapLeg" + i);
+  if (!svg) return;
+  const w = svg.clientWidth || 340;
+  const [x0, y0, x1, y1] = d.bbox;
+  const k = Math.cos((y0 + y1) / 2 * Math.PI / 180);
+  const spanX = (x1 - x0) * k || 1e-6, spanY = (y1 - y0) || 1e-6, pad = 6;
+  const h = Math.max(180, Math.min(360, Math.round((w - 2 * pad) * (spanY / spanX)) + 2 * pad));
+  const sc = Math.min((w - 2 * pad) / spanX, (h - 2 * pad - 16) / spanY);
+  const offX = (w - spanX * sc) / 2, offY = (h - 16 - spanY * sc) / 2;
+  const px = (lon) => offX + (lon - x0) * k * sc;
+  const py = (lat) => h - 16 - offY - (lat - y0) * sc;
+  const out = [];
+  d.ring.forEach((ring) => out.push(
+    `<path d="${ring.map((p, n) => (n ? "L" : "M") + px(p[0]).toFixed(1) + "," + py(p[1]).toFixed(1)).join("")}Z"
+      fill="${css(COLORS[i])}" fill-opacity=".1" stroke="${css("--line")}" stroke-width="1"/>`));
+  const maxA = Math.max(1, ...d.parks.map((p) => p.a));
+  d.parks.forEach((p) => {
+    const rr = 1.5 + 6.5 * Math.sqrt(p.a / maxA);
+    out.push(`<circle cx="${px(p.x).toFixed(1)}" cy="${py(p.y).toFixed(1)}" r="${rr.toFixed(1)}"
+      fill="${css(COLORS[i])}" fill-opacity="${p.e === "미집행" ? .9 : .5}" stroke="${css("--panel")}" stroke-width=".5"
+      ><title>${esc(p.n)} · ${esc(p.t)} · ${esc(p.e)} · ${fmt(p.a)} ㎡</title></circle>`);
+  });
+  const mPerPx = 111320 / sc;
+  const target = (w - 2 * pad) * 0.28 * mPerPx;
+  const unit = [100, 200, 500, 1000, 2000, 5000, 10000].reduce((p, q) =>
+    (Math.abs(q - target) < Math.abs(p - target) ? q : p));
+  const barPx = unit / mPerPx;
+  out.push(`<line x1="${pad}" x2="${pad + barPx}" y1="${h - 7}" y2="${h - 7}" stroke="${css("--mute")}" stroke-width="2"/>`);
+  out.push(`<text x="${pad + barPx + 5}" y="${h - 4}" font-size="9" fill="${css("--mute")}">${unit >= 1000 ? (unit / 1000) + " km" : unit + " m"}</text>`);
+  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+  svg.setAttribute("height", h);
+  svg.innerHTML = out.join("");
+  legend.innerHTML =
+    `<span><i class="sw" style="background:${css(COLORS[i])};opacity:.9"></i>미집행</span>` +
+    `<span><i class="sw" style="background:${css(COLORS[i])};opacity:.5"></i>집행완료·기타</span>` +
+    `<span>공원 ${fmt(d.parks.length)}곳</span>`;
+}
+
 draw();
 addEventListener("resize", draw);
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", draw);
